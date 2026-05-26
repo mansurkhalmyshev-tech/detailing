@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DetailingPro - Платформа для детейлинга</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Навигация -->
+    <nav class="navbar">
+        <div class="logo">DetailingPro</div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Главная</a></li>
+            <li><a href="#services">Услуги</a></li>
+            <li><a href="#calculator">Калькулятор</a></li>
+            <li><a href="#workspace">Рабочее пространство</a></li>
+            <li><a href="#orders">Заказы</a></li>
+        </ul>
+        <div class="burger" onclick="toggleMenu()">☰</div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero -->
+        <section id="home" class="hero">
+            <h1>Профессиональный детейлинг вашего автомобиля</h1>
+            <p>Запишитесь на услугу онлайн, рассчитайте стоимость и следите за прогрессом работ в личном кабинете</p>
+            <a href="#services" class="btn">Выбрать услугу</a>
+        </section>
+
+        <!-- Услуги -->
+        <section id="services" class="section">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card" onclick="selectService('moyka')">
+                    <h3>🚗 Комплексная мойка</h3>
+                    <p>Тщательная очистка кузова и салона профессиональной химией</p>
+                    <div class="price">от 1 500 ₽</div>
+                    <button class="btn btn-primary">Рассчитать стоимость</button>
+                </div>
+                <div class="service-card" onclick="selectService('polirovka')">
+                    <h3>✨ Полировка кузова</h3>
+                    <p>Восстановление блеска и удаление мелких царапин</p>
+                    <div class="price">от 8 000 ₽</div>
+                    <button class="btn btn-primary">Рассчитать стоимость</button>
+                </div>
+                <div class="service-card" onclick="selectService('keramika')">
+                    <h3>🛡️ Керамическое покрытие</h3>
+                    <p>Долгосрочная защита кузова от царапин и химии</p>
+                    <div class="price">от 25 000 ₽</div>
+                    <button class="btn btn-primary">Рассчитать стоимость</button>
+                </div>
+                <div class="service-card" onclick="selectService('plenka')">
+                    <h3>📋 Антигравийная плёнка</h3>
+                    <p>Защита ЛКП от сколов и царапин на 5+ лет</p>
+                    <div class="price">от 35 000 ₽</div>
+                    <button class="btn btn-primary">Рассчитать стоимость</button>
+                </div>
+                <div class="service-card" onclick="selectService('himchistka')">
+                    <h3>🧼 Химчистка салона</h3>
+                    <p>Глубокая очистка всех поверхностей салона</p>
+                    <div class="price">от 6 000 ₽</div>
+                    <button class="btn btn-primary">Рассчитать стоимость</button>
+                </div>
+                <div class="service-card" onclick="selectService('fary')">
+                    <h3>💡 Восстановление фар</h3>
+                    <p>Полировка и защита фар от помутнения</p>
+                    <div class="price">от 3 000 ₽</div>
+                    <button class="btn btn-primary">Рассчитать стоимость</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Калькулятор -->
+        <section id="calculator" class="section">
+            <h2 class="section-title">Калькулятор стоимости</h2>
+            <div class="calculator">
+             <div class="form-group">
+                    <label>Выберите услугу</label>
+                    <select id="calcService" onchange="calculatePrice()">
+                        <option value="moyka">Комплексная мойка</option>
+                        <option value="polirovka">Полировка кузова</option>
+                        <option value="keramika">Керамическое покрытие</option>
+                        <option value="plenka">Антигравийная плёнка</option>
+                        <option value="himchistka">Химчистка салона</option>
+                        <option value="fary">Восстановление фар</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Размер автомобиля</label>
+                    <select id="calcSize" onchange="calculatePrice()">
+                        <option value="1">Малый (седан, хэтчбек)</option>
+                        <option value="1.2">Средний (универсал, кроссовер)</option>
+                        <option value="1.5">Крупный (внедорожник, минивэн)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Дополнительные опции</label>
+                    <select id="calcExtra" onchange="calculatePrice()">
+                        <option value="0">Без дополнений</option>
+                        <option value="2000">Защита стёкол (+2 000 ₽)</option>
+                        <option value="3000">Обработка кожи (+3 000 ₽)</option>
+                        <option value="5000">Антидождь (+5 000 ₽)</option>
+                    </select>
+                </div>
+                <div class="result-box" id="calcResult">
+                    Итоговая стоимость: 1 500 ₽
+                </div>
+                <button class="btn btn-primary" style="width: 100%;" onclick="bookService()">
+                    Записаться на услугу
+                </button>
+            </div>
+        </section>
+
+        <!-- Рабочее пространство -->
+        <section id="workspace" class="section">
+            <h2 class="section-title">Рабочее пространство</h2>
+            <div class="tools-grid">
+                <!-- Чат -->
+                <div class="tool-card" style="grid-column: 1 / -1;">
+                    <h3>💬 Чат с консультантом</h3>
+                    <div class="chat-container">
+                        <div class="chat-messages" id="chatMessages">
+                            <div class="message bot">Здравствуйте! Я ваш консультант по детейлингу. Чем могу помочь?</div>
+                        </div>
+                        <div class="chat-input">
+                            <input type="text" id="chatInput" placeholder="Введите сообщение..." onkeypress="if(event.key==='Enter')sendMessage()">
+                            <button class="btn btn-primary" onclick="sendMessage()">Отправить</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Заметки -->
+                <div class="tool-card">
+                    <h3>📝 Заметки по автомобилю</h3>
+                    <div class="form-group">
+                        <input type="text" id="noteInput" placeholder="Введите заметку (VIN, пробег, рекомендации)...">
+                        <button class="btn btn-primary" onclick="addNote()">Добавить заметку</button>
+                    </div>
+                    <div id="notesList"></div>
+                </div>
+
+                <!-- Справочник материалов -->
+                <div class="tool-card">
+                    <h3>📚 Справочник материалов</h3>
+                    <div class="form-group">
+                        <input type="text" id="matName" placeholder="Название материала">
+                        <input type="text" id="matDesc" placeholder="Описание (свойства, срок службы)...">
+                        <button class="btn btn-primary" onclick="addMaterial()">Добавить материал</button>
+                    </div>
+                    <div id="materialsList"></div>
+                </div>
+                 <!-- Переводчик -->
+                <div class="tool-card">
+                    <h3>🌐 Переводчик терминов</h3>
+                    <div class="form-group">
+                        <input type="text" id="transInput" placeholder="Введите термин (например: ceramic coating)">
+                        <button class="btn btn-primary" onclick="translateText()">Перевести</button>
+                    </div>
+                    <div id="transResult" style="margin-top: 1rem; padding: 1rem; background: #f8fafc; border-radius: 8px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Заказы -->
+        <section id="orders" class="section">
+            <h2 class="section-title">Мои заказы</h2>
+            <div id="ordersList">
+                <div class="order-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3>Комплексная мойка</h3>
+                        <span class="status-badge status-waiting">Ожидает</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Дата: 28.05.2026 | Авто: Toyota Camry</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 0%"></div></div>
+                </div>
+                <div class="order-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3>Полировка кузова</h3>
+                        <span class="status-badge status-progress">В работе</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Дата: 25.05.2026 | Авто: BMW X5</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 60%"></div></div>
+                </div>
+                <div class="order-card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                        <h3>Керамическое покрытие</h3>
+                        <span class="status-badge status-done">Готово</span>
+                    </div>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Дата: 20.05.2026 | Авто: Mercedes C-Class</p>
+                    <div class="progress-bar"><div class="progress-fill" style="width: 100%"></div></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="section">
+            <h2 class="section-title">Часто задаваемые вопросы</h2>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Сколько времени занимает нанесение керамики?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">Обычно процесс занимает 1-2 дня в зависимости от размера автомобиля и состояния кузова.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Можно ли мыть машину после полировки?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">Рекомендуется воздержаться от мытья 3-5 дней после процедуры для полного отверждения защитного слоя.</div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question" onclick="toggleFaq(this)">
+                    <span>Что входит в комплексную мойку?</span>
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">Мойка кузова, очистка дисков, протирка стёкол, пылесос салона, обработка пластика.</div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 DetailingPro. Все права защищены.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
